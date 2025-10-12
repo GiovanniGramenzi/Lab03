@@ -1,4 +1,5 @@
 from auto import Auto
+from noleggio import Noleggio
 class Autonoleggio:
 
     def __init__(self, nome, responsabile):
@@ -6,6 +7,7 @@ class Autonoleggio:
         self.nome=nome
         self.responsabile=responsabile
         self.macchine=[]
+        self.noleggi=[]
 
     def carica_file_automobili(self, file_path):
         """Carica le auto dal file"""
@@ -41,10 +43,32 @@ class Autonoleggio:
     def automobili_ordinate_per_marca(self):
         """Ordina le automobili per marca in ordine alfabetico"""
         # TODO
+        #macchine_ordinate=[]
+        #for car in self.macchine:
+            #macchine_ordinate.append(car)
+        #macchine_ordinate.sort(key=itemgetter(1))
+        #return macchine_ordinate
+
+
+
+
 
     def nuovo_noleggio(self, data, id_automobile, cognome_cliente):
         """Crea un nuovo noleggio"""
         # TODO
+        for car in self.macchine:
+            if car.codice == id_automobile:
+                break
+            else:
+                raise Exception('auto non presente nel sistema')
+        for noleggio in self.noleggi:
+            if noleggio.id_automobile== id_automobile:
+                raise Exception('auto già noleggiata')
+
+        cod_n=f'N{len(self.noleggi)+1}'
+        nuovo_nol=Noleggio(data,id_automobile,cognome_cliente,cod_n)
+        self.noleggi.append(nuovo_nol)
+        return nuovo_nol
 
 
     def termina_noleggio(self, id_noleggio):
