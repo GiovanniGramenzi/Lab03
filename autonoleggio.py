@@ -1,5 +1,6 @@
 from auto import Auto
 from noleggio import Noleggio
+from operator import attrgetter
 class Autonoleggio:
 
     def __init__(self, nome, responsabile):
@@ -43,11 +44,9 @@ class Autonoleggio:
     def automobili_ordinate_per_marca(self):
         """Ordina le automobili per marca in ordine alfabetico"""
         # TODO
-        #macchine_ordinate=[]
-        #for car in self.macchine:
-            #macchine_ordinate.append(car)
-        #macchine_ordinate.sort(key=itemgetter(1))
-        #return macchine_ordinate
+        auto_riordinate=sorted(self.macchine, key=attrgetter('marca'))
+        return auto_riordinate
+
 
 
 
