@@ -58,8 +58,8 @@ class Autonoleggio:
         for car in self.macchine:
             if car.codice == id_automobile:
                 break
-            else:
-                raise Exception('auto non presente nel sistema')
+        else:
+            raise Exception('auto non presente nel sistema')
         for noleggio in self.noleggi:
             if noleggio.id_automobile== id_automobile:
                 raise Exception('auto già noleggiata')
@@ -73,3 +73,9 @@ class Autonoleggio:
     def termina_noleggio(self, id_noleggio):
         """Termina un noleggio in atto"""
         # TODO
+        for nol in self.noleggi:
+            if nol.cod_n == id_noleggio:
+                self.noleggi.remove(nol)
+                return
+
+        raise Exception('noleggio non esistente')
